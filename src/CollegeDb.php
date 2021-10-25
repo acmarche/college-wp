@@ -8,11 +8,10 @@ class CollegeDb
 
     public function __construct()
     {
-        Env::loadEnv();
         $dsn      = 'mysql:host=localhost;dbname=invitation';
-        $username = $_ENV['DB_COLLEGE_USER'];
-        $password = $_ENV['DB_COLLEGE_PASS'];
-        $options = array(
+        $username = DB_USER;
+        $password = DB_PASSWORD;
+        $options  = array(
             \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
             \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
         );
