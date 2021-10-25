@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <h3 class="jumbotron-heading">Liste des manifestations</h3>
+    <p class="lead text-muted">
+        Cliquez sur le nom de l'évenement pour obtenir le détail.</p>
+
+    <table class="table table-bordered">
+        <tr>
+            <th>Nom</th>
+            <th>Quand?</th>
+            <th>Où?</th>
+        </tr>
+        {% for event in events %}
+            <tr>
+                <td>
+                    <a href="/AcMarche/College/src/detail.php?id={{ event.id }}">
+                        {{ event.intitule }}
+                    </a>
+                </td>
+                <td> {{ event | niceDate }}</td>
+                <td> {{ event.lieu }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

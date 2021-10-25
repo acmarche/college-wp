@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+
+    <h3 class="jumbotron-heading">{{ event.intitule }}</h3>
+    <p class="lead text-muted">
+        {{ event.object | nl2br }}
+    </p>
+
+    <table class="table table-bordered table-hover">
+        <tr>
+            <th>Type</th>
+            <td>
+                {{ event.typeevent }}
+            </td>
+        </tr>
+        <tr>
+            <th>Quand ?</th>
+            <td>
+                {{ event | niceDate }}
+            </td>
+        </tr>
+        <tr>
+            <th>Représentant de la Ville ?</th>
+            <td>
+                {{ event.representant }}
+            </td>
+        </tr>
+        <tr>
+            <th>Organisateur</th>
+            <td>
+                {{ event.organisateur }}
+            </td>
+        </tr>
+        <tr>
+            <th>Sur Marche ?</th>
+            <td>
+                {% if event.ismarche %}
+                    <span class="glyphicon glyphicon-ok"></span>
+                {% else %}
+                    Non
+                {% endif %}
+            </td>
+        </tr>
+        <tr>
+            <th><span class="glyphicon glyphicon-map-marker"></span> Lieu</th>
+            <td>
+                {{ event.lieu }}
+            </td>
+        </tr>
+    </table>
+    <br/><br/>
+
+    {% include '_participations.html.twig' %}
+    <br/><br/>
+    <a href="/AcMarche/College/src/index.php" class="btn btn-primary">Retour à la liste</a>
+{% endblock %}

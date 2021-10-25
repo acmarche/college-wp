@@ -1,0 +1,25 @@
+<h3>Participation</h3>
+<table class="table table-bordered">
+    <tr>
+        <th>Nom</th>
+        <th>Réponse</th>
+    </tr>
+    {% for participation in participations %}
+        <tr>
+            <td>
+                {{ participation.nom }}
+            </td>
+            <td>
+                {% if participation.reponse == true %}
+                    Oui
+                {% else %}
+                    Non
+                {% endif %}
+            </td>
+        </tr>
+    {% else %}
+        <tr>
+            <td class="2">Aucune réponse</td>
+        </tr>
+    {% endfor %}
+</table>

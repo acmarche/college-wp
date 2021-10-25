@@ -1,0 +1,30 @@
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <title>Agenda du Collège</title>
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.3/examples/pricing/">
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+   <a href="/AcMarche/College/src"><h5 class="my-0 mr-md-auto font-weight-normal">Ac Marche - Evènements</h5></a>
+    <nav class="my-2 my-md-0 mr-md-3">
+    </nav>
+</div>
+
+
+<div class="container">
+
+    {% include '_flash_messages.html.twig' %}
+
+    {% block content %}
+
+    {% endblock %}
+</div>
+</body>
+</html>
