@@ -1,5 +1,6 @@
 <?php
 
+require_once '../../../wp-load.php';
 require '../../../vendor/autoload.php';
 
 use AcMarche\College\AgendaCollege;
