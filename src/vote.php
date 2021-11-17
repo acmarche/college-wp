@@ -9,6 +9,7 @@
  */
 
 require '../../../vendor/autoload.php';
+require_once '../../../wp-load.php';//pour db
 
 use AcMarche\College\AgendaCollege;
 use AcMarche\College\CollegeDb;
