@@ -10,23 +10,24 @@
 
 namespace AcMarche\College;
 
+use DateTime;
 use Twig\Extension\AbstractExtension;
 use Twig\TwigFilter;
 
 class TwigExtension extends AbstractExtension
 {
-    public function getFilters()
+    public function getFilters(): array
     {
         return [
-            new TwigFilter('niceDate', [$this, 'niceDate']),
+            new TwigFilter('niceDate', fn(array $event): string => $this->niceDate($event)),
         ];
     }
 
     public function niceDate(array $event): string
     {
         $format = 'Y-m-d H:i:s';
-        $dateDebutTime = \DateTime::createFromFormat($format,$event['date_debut']);
-        $dateFinTime = \DateTime::createFromFormat($format, $event['date_fin']);
+        $dateDebutTime = DateTime::createFromFormat($format,$event['date_debut']);
+        $dateFinTime = DateTime::createFromFormat($format, $event['date_fin']);
 
         $dateDebut = $dateDebutTime->format('d-m-Y');
         $heureDebut = $dateDebutTime->format('H:i');

@@ -2,9 +2,13 @@
 
 namespace AcMarche\College;
 
+use PDO;
+use DateTime;
+use Exception;
+use PDOStatement;
 class CollegeDb
 {
-    private \PDO $dbh;
+    private PDO $dbh;
 
     public function __construct()
     {
@@ -12,11 +16,11 @@ class CollegeDb
         $username = DB_USER;
         $password = DB_PASSWORD;
         $options  = array(
-            \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
-            \PDO::ATTR_ERRMODE            => \PDO::ERRMODE_EXCEPTION,
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8',
+            PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         );
 
-        $this->dbh = new \PDO($dsn, $username, $password, $options);
+        $this->dbh = new PDO($dsn, $username, $password, $options);
     }
 
     public function getDestinaireByToken(string $token)
@@ -37,7 +41,7 @@ class CollegeDb
 
     public function getEvents()
     {
-        $today       = new \DateTime();
+        $today       = new DateTime();
         $todayString = $today->format('Y-m-d');
 
         $sql   = "SELECT * FROM events WHERE `date_fin` >= '$todayString' ";
@@ -64,16 +68,12 @@ WHERE `event_id` = '$eventId' ";
     }
 
     /**
-     * @param int $destinataire
-     * @param int $idEvent
-     * @param int $response
      *
-     * @return bool|string
-     * @throws \Exception
+     * @throws Exception
      */
-    public function insertVote(int $destinataire, int $idEvent, int $response)
+    public function insertVote(int $destinataire, int $idEvent, int $response): bool
     {
-        $today       = new \DateTime();
+        $today       = new DateTime();
         $todayString = $today->format('Y-m-d H:i:s');
 
         $req = "INSERT INTO `participation` (`event_id`,`destinataire_id`,`reponse`,`createdAt`, `updatedAt`) 
@@ -89,14 +89,14 @@ VALUES (?,?,?,?,?)";
         return $stmt->execute();
     }
 
-    public function execQuery($sql)
+    public function execQuery($sql): bool|PDOStatement
     {
         $query = $this->dbh->query($sql);
         $error = $this->dbh->errorInfo();
         if ($error[0] != '0000') {
             // mail('jf@marche.be', 'duobac error sql', $error[2]);
 
-            throw new \Exception($error[2]);
+            throw new Exception($error[2]);
         };
 
         return $query;
