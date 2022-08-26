@@ -8,8 +8,8 @@
  *
  */
 
-require __DIR__ . '/../../../vendor/autoload.php';
-require_once __DIR__ . '/../../../wp-load.php';//pour db
+require __DIR__ . '/../../../../vendor/autoload.php';
+require_once __DIR__ . '/../../../../wp-load.php';//pour db
 
 use AcMarche\College\AgendaCollege;
 use AcMarche\College\CollegeDb;

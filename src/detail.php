@@ -1,7 +1,7 @@
 <?php
 
-require_once __DIR__ . '/../../../wp-load.php';
-require __DIR__ . '/../../../vendor/autoload.php';
+require_once __DIR__ . '/../../../../wp-load.php';
+require __DIR__ . '/../../../../vendor/autoload.php';
 
 use AcMarche\College\AgendaCollege;
 use AcMarche\College\CollegeDb;
