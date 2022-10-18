@@ -21,6 +21,6 @@ if(!$destinataire){
     return;
 }*/
 $events = $collegeDb->getEvents();
-$vars = ['events' => $events, 'flashes'=>$session->getFlashBag()->all()];
+$vars = ['events' => $events, 'flashes'=>$session->getFlashBag()->all(), 'token'=>$token];
 $agendaCollege->render('index', $vars);
 die();
