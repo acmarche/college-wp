@@ -31,7 +31,7 @@ if ($destinataire && $event) {
 
     if ($collegeDb->checkRepondu($destinataire['id'], $event)) {
         $session->getFlashBag()->add('warning', 'Vous avez déjà répondu');
-        $response = new RedirectResponse('/src/AcMarche/College/src/detail.php?token='.$token.'&event='.$event);
+        $response = new RedirectResponse('/src/AcMarche/College/src/detail.php?token='.$token.'&id='.$event);
         $response->send();
         die();
     }
@@ -39,12 +39,12 @@ if ($destinataire && $event) {
     try {
         $collegeDb->insertVote($destinataire['id'], $event, $reponse);
         $session->getFlashBag()->add('success', 'Merci pour votre réponse');
-        $response = new RedirectResponse('/src/AcMarche/College/src/detail.php?token='.$token.'&event='.$event);
+        $response = new RedirectResponse('/src/AcMarche/College/src/detail.php?token='.$token.'&id='.$event);
         $response->send();
         die();
     } catch (Exception $e) {
         $session->getFlashBag()->add('danger', 'Une erreur est survenue: '.$e->getMessage());
-        $response = new RedirectResponse('/src/AcMarche/College/src/detail.php?token='.$token.'&event='.$event);
+        $response = new RedirectResponse('/src/AcMarche/College/src/detail.php?token='.$token.'&id='.$event);
         $response->send();
         die();
     }
