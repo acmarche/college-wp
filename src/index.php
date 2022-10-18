@@ -15,11 +15,11 @@ $session->start();
 
 $request = Request::createFromGlobals();
 $token = $request->get('token');
-$destinataire = $collegeDb->getDestinaireByToken($token);
+/*$destinataire = $collegeDb->getDestinaireByToken($token);
 if(!$destinataire){
     $agendaCollege->render('token', []);
     return;
-}
+}*/
 $events = $collegeDb->getEvents();
 $vars = ['events' => $events, 'flashes'=>$session->getFlashBag()->all()];
 $agendaCollege->render('index', $vars);
