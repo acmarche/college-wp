@@ -6,6 +6,7 @@ use PDO;
 use DateTime;
 use Exception;
 use PDOStatement;
+
 class CollegeDb
 {
     private PDO $dbh;
@@ -23,8 +24,11 @@ class CollegeDb
         $this->dbh = new PDO($dsn, $username, $password, $options);
     }
 
-    public function getDestinaireByToken(string $token)
+    public function getDestinaireByToken(?string $token)
     {
+        if ( ! $token) {
+            return null;
+        }
         $sql   = "SELECT * FROM destinataires WHERE `token` = '$token' ";
         $query = $this->execQuery($sql);
 
